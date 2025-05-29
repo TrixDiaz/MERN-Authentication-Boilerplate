@@ -116,5 +116,18 @@
   }
   body {
     @apply bg-background text-foreground;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Add transitions for all theme-related properties */
+  :root {
+    transition: background-color 0.3s ease, color 0.3s ease,
+      border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Ensure all theme variables transition smoothly */
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease,
+      border-color 0.3s ease, box-shadow 0.3s ease;
   }
 }
