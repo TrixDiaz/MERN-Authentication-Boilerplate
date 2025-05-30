@@ -34,6 +34,8 @@ import {
 } from "lucide-react"
 import { useState } from "react"
 import { ModeToggle } from "../common/ThemeToggle"
+import { Link } from "react-router-dom"
+
 
 function Header() {
     const isDesktop = useMediaQuery("(min-width: 768px)")
@@ -69,7 +71,7 @@ function Header() {
     ]
 
     return (
-        <header className="sticky top-0 z-50 mt-4 bg-background max-w-7xl mx-auto rounded-lg border">
+        <header className="sticky top-4 z-50 bg-background max-w-7xl mx-auto rounded-lg border">
             {isDesktop ? (
                 // Desktop Header 
                 <div className="max-w-7xl mx-auto px-4">
@@ -88,11 +90,10 @@ function Header() {
                         <NavigationMenu>
                             <NavigationMenuList className="space-x-2">
                                 <NavigationMenuItem>
-                                    <NavigationMenuLink
-                                        href="/"
-                                        className="flex items-center space-x-2 hover:bg-accent transition-colors duration-200 px-4 py-2 rounded-lg font-medium"
-                                    >
-                                        <span>Home</span>
+                                    <NavigationMenuLink asChild>
+                                        <Link to="/" className="flex items-center space-x-2 hover:bg-accent transition-colors duration-200 px-4 py-2 rounded-lg font-medium">
+                                            <span>Home</span>
+                                        </Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
 
@@ -104,9 +105,9 @@ function Header() {
                                         <div className="grid gap-3 p-6 w-[500px] lg:w-[600px]">
                                             <div className="row-span-3">
                                                 <NavigationMenuLink asChild>
-                                                    <a
+                                                    <Link
                                                         className="flex h-full w-full select-none flex-col justify-end rounded-md bg-accent p-6 no-underline outline-none focus:shadow-md"
-                                                        href="/services"
+                                                        to="/services"
                                                     >
                                                         <div className="mb-2 text-lg font-medium">
                                                             Our Services
@@ -114,14 +115,14 @@ function Header() {
                                                         <p className="text-sm leading-tight text-muted-foreground">
                                                             Comprehensive solutions for your digital needs
                                                         </p>
-                                                    </a>
+                                                    </Link>
                                                 </NavigationMenuLink>
                                             </div>
                                             <div className="grid grid-cols-2 gap-3">
                                                 {services.map((service, index) => (
                                                     <NavigationMenuLink key={index} asChild>
-                                                        <a
-                                                            href={`/services/${service.title.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
+                                                        <Link
+                                                            to={`/services/${service.title.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
                                                             className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent focus:bg-accent group"
                                                         >
                                                             <div className="flex items-center space-x-2 text-sm font-medium leading-none">
@@ -133,7 +134,7 @@ function Header() {
                                                             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                                                                 {service.description}
                                                             </p>
-                                                        </a>
+                                                        </Link>
                                                     </NavigationMenuLink>
                                                 ))}
                                             </div>
@@ -142,20 +143,18 @@ function Header() {
                                 </NavigationMenuItem>
 
                                 <NavigationMenuItem>
-                                    <NavigationMenuLink
-                                        href="/about"
-                                        className="flex items-center space-x-2 hover:bg-accent transition-colors duration-200 px-4 py-2 rounded-lg font-medium"
-                                    >
-                                        <span>About</span>
+                                    <NavigationMenuLink asChild>
+                                        <Link to="/about" className="flex items-center space-x-2 hover:bg-accent transition-colors duration-200 px-4 py-2 rounded-lg font-medium">
+                                            <span>About</span>
+                                        </Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
 
                                 <NavigationMenuItem>
-                                    <NavigationMenuLink
-                                        href="/contact"
-                                        className="flex items-center space-x-2 hover:bg-accent transition-colors duration-200 px-4 py-2 rounded-lg font-medium"
-                                    >
-                                        <span>Contact</span>
+                                    <NavigationMenuLink asChild>
+                                        <Link to="/contact" className="flex items-center space-x-2 hover:bg-accent transition-colors duration-200 px-4 py-2 rounded-lg font-medium">
+                                            <span>Contact</span>
+                                        </Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
                             </NavigationMenuList>
@@ -219,9 +218,9 @@ function Header() {
                             <div className="flex-1 py-6">
                                 <nav className="space-y-2 px-4">
                                     {navigationItems.map((item, index) => (
-                                        <a
+                                        <Link
                                             key={index}
-                                            href={item.href}
+                                            to={item.href}
                                             className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-accent transition-colors duration-200 group"
                                             onClick={() => setIsDrawerOpen(false)}
                                         >
@@ -229,7 +228,7 @@ function Header() {
                                                 {item.icon}
                                             </span>
                                             <span className="font-medium">{item.name}</span>
-                                        </a>
+                                        </Link>
                                     ))}
 
                                     {/* Services Section */}
