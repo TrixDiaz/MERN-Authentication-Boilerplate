@@ -30,7 +30,8 @@ import {
     Code,
     Palette,
     Smartphone,
-    X
+    X,
+    Lock
 } from "lucide-react"
 import { useState } from "react"
 import { ModeToggle } from "../common/ThemeToggle"
@@ -162,9 +163,11 @@ function Header() {
 
                         {/* CTA Buttons */}
                         <div className="flex items-center space-x-3">
-                            <Button variant="outline" className="hidden md:inline-flex">
-                                Login
-                            </Button>
+                            <Link to='login'>
+                                <Button variant="outline" className="hidden md:inline-flex">
+                                    Login
+                                </Button>
+                            </Link>
                             <ModeToggle />
                         </div>
                     </div>
